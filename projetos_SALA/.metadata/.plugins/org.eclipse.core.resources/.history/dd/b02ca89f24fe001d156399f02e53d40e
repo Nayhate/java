@@ -1,0 +1,62 @@
+package principal.daos;
+
+import java.util.List;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
+import principal.modelos.Produto;
+
+public class ProdutoDAO implements DAO<Produto>{
+	
+	private EntityManager em;
+	private EntityManagerFactory emf;
+	
+	public ProdutoDAO() {
+		emf = Persistence.createEntityManagerFactory("ex_mysql");
+		em = emf.createEntityManager();
+	}
+	
+	
+	public Produto buscarPorId(Integer id) {
+		Produto produto = em.find(Produto.class, id);
+		return produto;
+	}
+	
+	public List<Produto> listar(){
+		List<Produto> lista = em.createQuery("from Pessoa", Produto.class)
+				               .getResultList();
+		return lista;
+	}
+	
+	public Integer salvar(Produto produto)p{
+		//Gravação da pessoa no banco de dados
+		em.getTransaction().begin();
+		em.persist(produto);
+		em.getTransaction().commit();
+		return produto.getId();
+	}
+	
+	public Integer atualizar(Produto produto)p{
+		//Atualização da pessoa no banco de dados
+		em.getTransaction().begin();
+		em.merge(produto);
+		em.getTransaction().commit();
+		return produto.getId();
+	}
+	
+	public void apagar(Integer id) {
+		Produto p = em.find(Produto.class, id);
+		em.getTransaction().begin();
+		em.remove(p);
+		em.getTransaction().commit();
+	}
+	
+	public void close() {
+		em.close();
+		emf.close();	
+	}
+
+
+
+}

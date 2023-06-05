@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="principal.telas.TelaDeGerenciamentoDeFuncionario"/>
+    <fullyQualifiedTypeName name="principal.controladores.CadastroFuncionario"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="principal.modelos.TipoBebida"/>
+    <fullyQualifiedTypeName name="principal.modelos.Sorvete"/>
+    <fullyQualifiedTypeName name="java.time.LocalDateTime"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="principal.modelos.StatusVenda"/>
+    <fullyQualifiedTypeName name="principal.modelos.Adicional"/>
+    <fullyQualifiedTypeName name="principal.modelos.Funcionario"/>
+    <fullyQualifiedTypeName name="principal.controladores.ControleAcesso"/>
+    <fullyQualifiedTypeName name="java.time.format.DateTimeFormatter"/>
+    <fullyQualifiedTypeName name="principal.db.Banco"/>
+    <fullyQualifiedTypeName name="principal.controladores.ControleVenda"/>
+    <fullyQualifiedTypeName name="principal.modelos.Venda.Status"/>
+    <fullyQualifiedTypeName name="principal.modelos.Venda"/>
+    <fullyQualifiedTypeName name="principal.controladores.CadastroProduto"/>
+    <fullyQualifiedTypeName name="principal.modelos.Bebida"/>
+    <fullyQualifiedTypeName name="principal.modelos.Produto"/>
+</qualifiedTypeNameHistroy>

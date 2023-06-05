@@ -1,0 +1,14 @@
+package principal;
+
+import principal.telas.TelaDeLogin;
+import principal.telas.TelaPrincipal;
+
+public class Programa {
+
+	public static void main(String[] args) {
+
+//		CargaInicial.rodar();
+		
+		TelaPrincipal.getInstance().mostrar();
+	}
+}

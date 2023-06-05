@@ -1,0 +1,87 @@
+
+body{
+
+    margin: 0px;
+
+}
+
+
+#pai{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+
+    border: 1px black solid;
+    background-color: black;
+
+    display:grid;
+    grid-template-columns: repeat(4, 25%);
+    grid-template-rows: repeat(4, 25%);
+
+}
+
+div{
+
+    border: 1px white dashed;
+    background-color: bisque;
+
+}
+
+#filho1{
+
+    border: 2px white solid;
+    background-color: lightseagreen;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center; 
+    align-items: center;
+
+    margin-bottom: 5px;
+    grid-row: 1/2;
+    grid-column: 1/5;
+    
+
+}
+
+.botao{
+
+    width: 100px;
+    height: 50px;
+    border: 1px black solid;
+    border-radius: 10px;
+    background-color: black;
+
+}
+
+#filho2{
+
+    border: 2px white solid;
+    background-color: lightblue;
+    margin-right: 5px;
+    grid-row: 2/4;
+    grid-column: 1/2;
+
+
+}
+
+#filho3{
+
+    border: 1px white dashed;
+    background-color: lightcoral;
+    grid-row: 2/4;
+    grid-column: 2/5;
+
+
+}
+
+#filho4{
+
+    background-color: lightgreen;
+    margin-top: 2px;
+    grid-row: 4/5;
+    grid-column: 1/5;
+    margin-bottom: 5px;
+
+
+}

@@ -1,0 +1,63 @@
+package principal.daos;
+
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
+
+public abstract class GenericDAO<T> implements DAO<T>{	
+	
+	private Class<T> persistedClass;
+	protected EntityManager entityManager;
+	
+	Type t = getClass().getGenericSuperclass();
+	ParameterizedType pt = (ParameterizedType) t;
+	persistedClass = (Class<T>) pt.getActualTypeArguments()[0];
+	EntityManagerFactory emf = Persistence.createEntityManagerFactory("ExemploJPA");
+	entityManager = emf.createEntityManager();
+
+	
+	public T buscarPorId(Integer id) {
+		T entidade = em.find(T.class, id);
+		return pessoa;
+	}
+	
+	public List<Pessoa> listar(){
+		List<Pessoa> lista = em.createQuery("from Pessoa", Pessoa.class)
+				               .getResultList();
+		return lista;
+	}
+	
+	public Integer salvar(Pessoa pessoa) {
+		//Gravação da pessoa no banco de dados
+		em.getTransaction().begin();
+		em.persist(pessoa);
+		em.getTransaction().commit();
+		return pessoa.getId();
+	}
+	
+	public Integer atualizar(Pessoa pessoa) {
+		//Atualização da pessoa no banco de dados
+		em.getTransaction().begin();
+		em.merge(pessoa);
+		em.getTransaction().commit();
+		return pessoa.getId();
+	}
+	
+	public void apagar(Integer id) {
+		Pessoa p = em.find(Pessoa.class, id);
+		em.getTransaction().begin();
+		em.remove(p);
+		em.getTransaction().commit();
+	}
+	
+	public void close() {
+		em.close();
+		emf.close();	
+	}
+}
+
+		
+}
+

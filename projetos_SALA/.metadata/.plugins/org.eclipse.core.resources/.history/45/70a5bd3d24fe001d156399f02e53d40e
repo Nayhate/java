@@ -1,0 +1,55 @@
+package principal.daos;
+
+public class ProdutoDAO implements DAO<Pessoa>{
+	
+	rivate EntityManager em;
+	private EntityManagerFactory emf;
+	
+	public PessoaDAO() {
+		emf = Persistence.createEntityManagerFactory("ex_mysql");
+		em = emf.createEntityManager();
+	}
+	
+	
+	public Pessoa buscarPorId(Integer id) {
+		Pessoa pessoa = em.find(Pessoa.class, id);
+		return pessoa;
+	}
+	
+	public List<Pessoa> listar(){
+		List<Pessoa> lista = em.createQuery("from Pessoa", Pessoa.class)
+				               .getResultList();
+		return lista;
+	}
+	
+	public Integer salvar(Pessoa pessoa) {
+		//Gravação da pessoa no banco de dados
+		em.getTransaction().begin();
+		em.persist(pessoa);
+		em.getTransaction().commit();
+		return pessoa.getId();
+	}
+	
+	public Integer atualizar(Pessoa pessoa) {
+		//Atualização da pessoa no banco de dados
+		em.getTransaction().begin();
+		em.merge(pessoa);
+		em.getTransaction().commit();
+		return pessoa.getId();
+	}
+	
+	public void apagar(Integer id) {
+		Pessoa p = em.find(Pessoa.class, id);
+		em.getTransaction().begin();
+		em.remove(p);
+		em.getTransaction().commit();
+	}
+	
+	public void close() {
+		em.close();
+		emf.close();	
+	}
+
+
+
+}
